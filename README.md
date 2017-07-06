@@ -9,7 +9,7 @@ Clone
 
 Usage
 -------------
-###Deploy to Google Cloud
+### Deploy to Google Cloud
 - Get credentials from cluster
 ```shell
 gcloud container clusters get-credentials [CLUSTER_NAME] --zone [CLUSTER_ZONE] --project [PROJECT_ID]
@@ -23,7 +23,7 @@ PROJECT_ID="$(gcloud config get-value project)"
 git clone https://github.com/thieunguyenhung/newai-elasticsearch.git
 cd newai-elasticsearch/elasticsearch/
 ```
-- Build image from Dockerfile, we host it in *Asia* and call it *my-elastic* with Tag *v1*
+- Build image from Dockerfile, we host it in **Asia** and call it **my-elastic** with Tag **v1**
 ```shell
 docker build -t asia.gcr.io/${PROJECT_ID}/my-elastic:v1 .
 ```
@@ -41,7 +41,7 @@ kubectl expose deployment elastic-service --type=LoadBalancer --port 9200
 ```
 Visit this [tutorial](https://cloud.google.com/container-engine/docs/tutorials/hello-node) for more information
 
-###Configure elasticsearch
+### Configure elasticsearch
 - Get elastic-service external IP, in this case it is 133.212.253.221
 ```shell
 $ kubectl get service
@@ -59,7 +59,7 @@ elastic-service-1897604083-ggwk0   1/1       Running   0          3m
 ```shell
 kubectl exec -it elastic-service-1897604083-ggwk0 bash
 ```
-- Edit elasticsearch.yml file and change *network.host* to your external IP then un-comment *http.port* and *network.host*
+- Edit elasticsearch.yml file and change **network.host** to your external IP then un-comment **http.port** and **network.host**
 ```shell
 nano /etc/elasticsearch/elasticsearch.yml
 ```
@@ -76,8 +76,7 @@ curl -X GET 'http://133.212.253.221:9200'
 Note
 -------------
 - Remember that elastic does **NOT** support authentication connection to your deployed server
-- You can edit the Dockerfile in anyway you like
-- Do **NOT** remove this line *ENV vm.max_map_count 262144* in Dockerfile or else the deployment process will be failed
+- You can edit the Dockerfile in anyway you like **BUT** do **NOT** remove this line **ENV vm.max_map_count 262144** in Dockerfile or else the deployment process will be failed
 
 License 
 -------------
