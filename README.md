@@ -33,7 +33,7 @@ gcloud docker -- push asia.gcr.io/${PROJECT_ID}/my-elastic:v1
 ```
 - Deploy image to pod, the deployment named elastic-service and has port 9200
 ```shell
-kubectl run elastic-service --image=asia.gcr.io/${PROJECT_ID}/newai-elastic:v1 --port 9200
+kubectl run elastic-service --image=asia.gcr.io/${PROJECT_ID}/my-elastic:v1 --port 9200
 ```
 - Expose the deployment named elastic-service to port 9200
 ```shell
@@ -81,3 +81,5 @@ Note
 License 
 -------------
 - [elastic Open Source license](https://www.elastic.co/subscriptions)
+
+### © 2017 NewAI Team
